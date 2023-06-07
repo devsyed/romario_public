@@ -1,0 +1,71 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.product-heading h2 {
+  font-size: 30px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+#tabs {
+  position: relative;
+}
+
+#tabs:before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #ccc;
+  z-index: -1;
+}
+
+#tabs .border-b {
+  border-bottom: 3px solid #000;
+}
+
+.product-img .off-prize {
+  position: absolute;
+  background-color: #000;
+  color: #fff;
+  padding: 6px;
+  font-size: 13px;
+  top: 10px;
+  left: 10px;
+  border-radius: 4px;
+}
+
+.product-img .top-sales {
+  position: absolute;
+  background-color: red;
+  color: #fff;
+  padding: 6px;
+  font-size: 13px;
+  top: 50px;
+  left: 10px;
+  border-radius: 4px;
+}
+
+.single-product-heading h3 {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.product-description p {
+  font-size: 15px;
+  color: #858585;
+}
+
+.product-prize h5 {
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.out-of-stock {
+  color: red;
+}
