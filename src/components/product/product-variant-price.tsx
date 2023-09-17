@@ -38,7 +38,7 @@ const VariationPrice: React.FC<Props> = ({
       <div className={basePriceClassName}>
         {!isEmpty(selectedVariation)
           ? `${price}`
-          : `${min_price} - ${max_price}`}
+          : `${min_price}`}
       </div>
 
       {basePrice && <del className={discountPriceClassName}>{basePrice}</del>}

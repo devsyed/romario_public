@@ -36,7 +36,7 @@ const CartItem: React.FC<CartItemProps> = ({ item }) => {
 			title={item?.name}
 		>
 			<div className="relative flex w-24 md:w-28 h-24 md:h-28 rounded-md overflow-hidden bg-gray-200 flex-shrink-0 cursor-pointer ltr:mr-4 rtl:ml-4">
-				<Image
+				<img
 					src={item?.image ?? "/assets/placeholder/cart-item.svg"}
 					width={112}
 					height={112}

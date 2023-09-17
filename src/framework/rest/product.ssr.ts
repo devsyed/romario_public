@@ -1,5 +1,5 @@
 import { API_ENDPOINTS } from "@framework/utils/endpoints";
-import { GetStaticPathsContext, GetStaticProps } from "next";
+import { GetStaticPathsContext, GetStaticProps,GetStaticPropsContext } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { QueryClient } from "react-query";
 import { dehydrate } from "react-query/hydration";
@@ -21,7 +21,7 @@ export async function getStaticPaths({ locales }: GetStaticPathsContext) {
   };
 }
 
-export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
+export const getStaticProps: GetStaticProps = async ({ params, locale = 'en' }: GetStaticPropsContext) => {
   const slug = params?.slug as string;
 
   const queryClient = new QueryClient({

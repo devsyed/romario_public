@@ -95,7 +95,9 @@
   @apply opacity-100;
   visibility: visible;
 }
-
+/* .rc-drawer-content button{
+  background-color: #003BD9;
+} */
 /*
 * RC Pagination
 */

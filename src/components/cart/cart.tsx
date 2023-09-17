@@ -65,7 +65,7 @@ export default function Cart() {
         <Link
           href={isEmpty === false ? ROUTES.CHECKOUT : '/'}
           className={cn(
-            'w-full px-5 py-3 md:py-4 flex items-center justify-center bg-heading rounded-md text-sm sm:text-base text-white focus:outline-none transition duration-300 hover:bg-gray-600',
+            'w-full px-5 py-3 md:py-4 flex items-center justify-center bg-primary rounded-md text-sm sm:text-base text-white focus:outline-none transition duration-300 hover:bg-gray-600',
             {
               'cursor-not-allowed bg-gray-400 hover:bg-gray-400': isEmpty,
             }

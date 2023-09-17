@@ -46,6 +46,8 @@ const ProductCard: FC<ProductProps> = ({
     amount: max_price!,
   });
 
+
+
   function handlePopupView() {
     setModalData(product.slug);
     setModalView('PRODUCT_VIEW');
@@ -74,7 +76,7 @@ const ProductCard: FC<ProductProps> = ({
     >
       <div
         className={cn(
-          'flex relative ltr:rounded-l-md rtl:rounded-r-md ',
+          'flex relative ltr:rounded-l-md rtl:rounded-r-md border',
           {
             'mb-3 md:mb-3.5 w-full aspect-[17/22]': variant === 'grid',
             'mb-3 md:mb-3.5 w-full aspect-[1/1.3]': variant === 'gridSmall',
@@ -89,14 +91,12 @@ const ProductCard: FC<ProductProps> = ({
           imageContentClassName
         )}
       >
-        <Image
-          src={image?.original ?? siteSettings?.product?.placeholderImage()}
-          fill
+        <img
+          src={image?.thumbnail ?? siteSettings?.product?.placeholderImage()}
           loading={imgLoading}
-          quality={100}
           alt={name || 'Product Image'}
-          className={cn('bg-gray-300 object-cover', {
-            'rounded-md transition duration-200 ease-in group-hover:rounded-b-none':
+          className={cn('bg-gray-300 group-hover:hidden transition-all object-cover', {
+            'rounded-md transition duration-200 ease-in group-hover:rounded-b-none ':
               variant === 'grid' || variant === 'gridSmall',
             'transition duration-150 ease-linear transform group-hover:scale-105':
               variant === 'gridSlim' || variant === 'gridSlimLarge',
@@ -105,6 +105,7 @@ const ProductCard: FC<ProductProps> = ({
           })}
           sizes="(max-width: 768px) 100vw"
         />
+        <img src={product.gallery?.[0]?.thumbnail} className='hidden bg-gray-300 group-hover:block transition-all' alt={name || "Product Image"} />
       </div>
       <div
         className={cn(
@@ -146,8 +147,6 @@ const ProductCard: FC<ProductProps> = ({
           {product_type.toLocaleLowerCase() === 'variable' ? (
             <>
               <span className="inline-block">{minPrice}</span>
-              <span> - </span>
-              <span className="inline-block">{maxPrice}</span>
             </>
           ) : (
             <>

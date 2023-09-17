@@ -179,24 +179,7 @@ export default function OrderView({ order, loadingStatus }: any) {
         <div className="mt-11">
           <OrderItems products={order?.products} />
         </div>
-        {order?.children?.length ? (
-          <div className="mt-11">
-            <h2 className="text-lg lg:text-xl xl:text-2xl font-bold text-heading mb-3 lg:mb-5 xl:mb-6">
-              {t('text-sub-orders')}
-            </h2>
-            <div>
-              <div className="flex items-start mb-6">
-                <p className="text-heading text-sm leading-6">
-                  <span className="font-bold">{t('text-note')}:</span>{' '}
-                  {t('text-message-sub-order')}
-                </p>
-              </div>
-              {Array.isArray(order?.children) && order?.children.length && (
-                <SuborderItems items={order?.children} />
-              )}
-            </div>
-          </div>
-        ) : null}
+        
       </div>
     </div>
   );

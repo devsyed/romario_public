@@ -14,6 +14,7 @@ module.exports = withPWA({
     domains: [
       '127.0.0.1',
       'localhost',
+      'romario.test',
       'googleusercontent.com',
       'maps.googleapis.com',
       'chawkbazarapi.redq.io',

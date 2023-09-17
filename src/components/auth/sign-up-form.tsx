@@ -163,7 +163,7 @@ const SignUpForm: React.FC<Props> = ({ layout = "modal" }) => {
               type="submit"
               loading={isLoading}
               disabled={isLoading}
-              className="h-11 md:h-12 w-full mt-2"
+              className="h-11 md:h-12 w-full mt-2 bg-primary hover:bg-primary"
             >
               {t("common:text-register")}
             </Button>
@@ -177,21 +177,12 @@ const SignUpForm: React.FC<Props> = ({ layout = "modal" }) => {
         </span>
       </div>
 
-      {/* Enable it for facebook social auth */}
-      {/*<Button*/}
-      {/*  type="submit"*/}
-      {/*  loading={false}*/}
-      {/*  disabled={isLoading}*/}
-      {/*  className="h-11 md:h-12 w-full mt-2.5 bg-facebook hover:bg-facebookHover"*/}
-      {/*>*/}
-      {/*  <ImFacebook2 className="text-sm sm:text-base ltr:ml-1.5 rtl:mr-1.5" />*/}
-      {/*  {t("common:text-login-with-facebook")}*/}
-      {/*</Button>*/}
+      
       <Button
         type="submit"
         loading={false}
         disabled={isLoading}
-        className="h-11 md:h-12 w-full mt-2.5 bg-google hover:bg-googleHover"
+        className="h-11 md:h-12 w-full mt-2.5 bg-[#4285f4] hover:bg-[#4285f4]"
       >
         <ImGoogle2 className="text-sm sm:text-base ltr:mr-1.5 rtl:ml-1.5" />
         {t("common:text-login-with-google")}

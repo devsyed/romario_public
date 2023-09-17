@@ -105,7 +105,10 @@ const ProductSingleDetails: React.FC<Props> = ({ product }: any) => {
   }
 
   // Combine image and gallery
-  const combineImages = [...product?.gallery, product?.image];
+  const galleryImages = product?.gallery || [];
+const mainImage = product?.image ? [product.image] : [];
+
+const combineImages = [...galleryImages, ...mainImage];
   return (
     <div className="items-start block grid-cols-9 pb-10 lg:grid gap-x-10 xl:gap-x-14 pt-7 lg:pb-14 2xl:pb-20">
       {width < 1025 ? (
@@ -121,7 +124,7 @@ const ProductSingleDetails: React.FC<Props> = ({ product }: any) => {
             combineImages?.map((item: Attachment, index: number) => (
               <SwiperSlide key={`product-gallery-key-${index}`}>
                 <div className="relative flex col-span-1 transition duration-150 ease-in hover:opacity-90">
-                  <Image
+                  <img
                     width={475}
                     height={618}
                     src={
@@ -137,7 +140,7 @@ const ProductSingleDetails: React.FC<Props> = ({ product }: any) => {
           ) : (
             <SwiperSlide key={`product-gallery-key`}>
               <div className="flex col-span-1 transition duration-150 ease-in hover:opacity-90">
-                <Image
+                <img
                   width={475}
                   height={618}
                   src={
@@ -159,7 +162,7 @@ const ProductSingleDetails: React.FC<Props> = ({ product }: any) => {
                 key={index}
                 className="flex col-span-1 transition duration-150 ease-in hover:opacity-90"
               >
-                <Image
+                <img
                   width={475}
                   height={618}
                   src={
@@ -174,7 +177,7 @@ const ProductSingleDetails: React.FC<Props> = ({ product }: any) => {
           ) : (
             <div className="flex justify-center bg-gray-300 rounded-md col-span-full">
               <div className="flex w-1/2 transition duration-150 ease-in hover:opacity-90">
-                <Image
+                <img
                   width={475}
                   height={618}
                   src={
@@ -241,7 +244,7 @@ const ProductSingleDetails: React.FC<Props> = ({ product }: any) => {
         <div className="flex items-center py-8 space-x-4 border-b border-gray-300 rtl:space-x-reverse ltr:md:pr-32 ltr:lg:pr-12 ltr:2xl:pr-32 ltr:3xl:pr-48 rtl:md:pl-32 rtl:lg:pl-12 rtl:2xl:pl-32 rtl:3xl:pl-48">
           {isEmpty(variations) && (
             <>
-              {Number(product.quantity) > 0 ? (
+              {Number(product?.quantity) > 0 ? (
                 <Counter
                   quantity={quantity}
                   onIncrement={() => setQuantity((prev) => prev + 1)}
@@ -367,17 +370,6 @@ const ProductSingleDetails: React.FC<Props> = ({ product }: any) => {
               </Link>
             </li>
 
-            <li>
-              <span className="inline-block font-semibold text-heading ltr:pr-2 rtl:pl-2">
-                {t('text-shop-colon')}
-              </span>
-              <Link
-                href={`${ROUTES.SHOPS}/${product?.shop?.slug}`}
-                className="inline-block ltr:pr-1.5 rtl:pl-1.5 transition hover:underline hover:text-heading ltr:last:pr-0 rtl:last:pl-0"
-              >
-                {product?.shop?.name}
-              </Link>
-            </li>
           </ul>
         </div>
       </div>

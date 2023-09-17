@@ -176,7 +176,7 @@ export const OTPLoginForm: React.FC<OTPProps> = ({ onLoginSuccess }) => {
           }`}
         >
           <PhoneInput
-            country={'us'}
+            country={'ae'}
             value={number}
             onChange={(phone) => setNumber(`+${phone}`)}
             inputClass="!p-0 ltr:!pr-4 rtl:!pl-4 ltr:!pl-14 rtl:!pr-14 !flex !items-center !w-full !appearance-none !transition !duration-300 !ease-in-out !text-heading !text-sm focus:!outline-none focus:!ring-0 !border !border-gray-300 ltr:!border-r-0 rtl:!border-l-0 !rounded ltr:!rounded-r-none rtl:!rounded-l-none focus:!border-black !h-12"

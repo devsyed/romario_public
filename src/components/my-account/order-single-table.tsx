@@ -34,6 +34,9 @@ const OrderSingleTable: React.FC<Props> = ({ order }) => {
         {t(order.order_status)}
       </td>
       <td className="ltr:text-left rtl:text-right lg:text-center px-4 py-5 text-heading">
+       {order.romario_tracking_id}
+      </td>
+      <td className="ltr:text-left rtl:text-right lg:text-center px-4 py-5 text-heading">
         {itemTotal} for {order.products.length} items
       </td>
       <td className="ltr:text-right rtl:text-left px-4 py-5 text-heading">

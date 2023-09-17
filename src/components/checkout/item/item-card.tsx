@@ -20,11 +20,10 @@ const ItemCard = ({ item, notAvailable }: Props) => {
       key={item.id}
     >
       <div className="w-[60px] h-[60px] ltr:mr-4 rtl:ml-4 rounded-md overflow-hidden flex-shrink-0">
-        <Image
+        <img
           src={item?.image ?? productPlaceholderThumbnail}
           width={60}
           height={60}
-          quality={100}
           className="object-cover bg-gray-100"
           alt={item.name}
         />

@@ -90,8 +90,8 @@ const CustomForm: React.FC<CustomFormProps> = ({
           divClassName: "flex flex-col sm:flex-row items-start justify-end",
           inputClassName: "px-4 lg:px-7 h-12 lg:h-14 text-center ltr:sm:text-left rtl:sm:text-right bg-white",
           buttonClassName:
-            "mt-3 sm:mt-0 w-full sm:w-auto ltr:sm:ml-2 rtl:sm:mr-2 md:h-full flex-shrink-0",
-          buttonTextClassName: "lg:py-0.5",
+            "mt-3 sm:mt-0 w-full sm:w-auto ltr:sm:ml-2 rtl:sm:mr-2 md:h-full flex-shrink-0 bg-primary text-[16px]",
+          buttonTextClassName: "lg:py-0.5 text-[16px]",
         }),
   };
 

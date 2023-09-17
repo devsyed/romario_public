@@ -37,6 +37,9 @@ const OrdersTable: React.FC<Props> = ({ orders, onPagination }: Props) => {
                 <th className="bg-gray-100 p-4 text-heading font-semibold ltr:text-left rtl:text-right lg:text-center w-36 xl:w-44">
                   {t("text-status")}
                 </th>
+                <th className="bg-gray-100 p-4 text-heading font-semibold ltr:text-left rtl:text-right lg:text-center w-36 xl:w-44">
+                  Tracking Number
+                </th>
                 <th className="bg-gray-100 p-4 text-heading font-semibold ltr:text-left rtl:text-right lg:text-center">
                   {t("text-total")}
                 </th>

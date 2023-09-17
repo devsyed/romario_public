@@ -18,7 +18,7 @@ const Logo: React.FC<React.AnchorHTMLAttributes<{}>> = ({
       {...props}
     >
       <Image
-        src={logo?.original ?? siteSettings.logo.url}
+        src={'/logo-original.png'}
         alt={siteTitle || 'ChawkBazar Logo'}
         height={siteSettings.logo.height}
         width={siteSettings.logo.width}

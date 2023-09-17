@@ -125,8 +125,7 @@ export default function ProductPopup({ productSlug }: { productSlug: string }) {
     <div className="bg-white rounded-lg">
       <div className="flex flex-col lg:flex-row w-full md:w-[650px] lg:w-[960px] mx-auto overflow-hidden">
         <div className="relative flex items-center justify-center flex-shrink-0 w-full overflow-hidden bg-gray-300 lg:w-430px aspect-[1/1.3] max-h-430px lg:max-h-full">
-          <Image
-            fill
+          <img
             src={
               productImage?.original ??
               '/assets/placeholder/products/product-thumbnail.svg'

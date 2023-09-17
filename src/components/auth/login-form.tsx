@@ -179,7 +179,7 @@ const LoginForm: React.FC<Props> = ({ layout = 'modal' }) => {
               type="submit"
               loading={loading}
               disabled={loading}
-              className="h-11 md:h-12 w-full mt-1.5"
+              className="h-11 md:h-12 w-full mt-1.5 bg-primary hover:bg-primary"
             >
               {t('common:text-login')}
             </Button>
@@ -194,18 +194,10 @@ const LoginForm: React.FC<Props> = ({ layout = 'modal' }) => {
       </div>
 
       <div className="grid grid-cols-1 gap-4 mt-2">
-        <Button
-          loading={false}
-          disabled={false}
-          className="h-11 md:h-12 w-full mt-2.5 bg-google hover:bg-googleHover"
-          onClick={() => signIn('facebook')}
-        >
-          <ImFacebook2 className="text-sm sm:text-base ltr:mr-1.5 rtl:ml-1.5" />
-          {t('common:text-login-with-facebook')}
-        </Button>
+        
 
         <Button
-          className="h-11 md:h-12 w-full mt-1.5"
+          className="h-11 md:h-12 w-full mt-1.5 bg-primary hover:bg-primary"
           disabled={loading}
           onClick={handleOtpLogin}
         >

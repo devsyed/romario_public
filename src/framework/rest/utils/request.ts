@@ -1,7 +1,11 @@
 import axios from 'axios';
 import { getToken } from './get-token';
 import pickBy from 'lodash/pickBy';
+import https from 'https'; // Import the 'https' module
 
+const httpsAgent = new https.Agent({
+  rejectUnauthorized: false
+});
 const request = axios.create({
   baseURL: process.env.NEXT_PUBLIC_REST_API_ENDPOINT, // TODO: take this api URL from env
   timeout: 300000000,
@@ -9,6 +13,7 @@ const request = axios.create({
     Accept: 'application/json',
     'Content-Type': 'application/json',
   },
+  httpsAgent: httpsAgent,
 });
 
 // Change request data/error here

@@ -22,6 +22,7 @@ const HomeProductsTopBlock: React.FC<Props> = ({
 
   return (
     <div className={`${className}`}>
+      <h3 className='text-[24px] mb-5 text-black font-semibold'>{sectionHeading}</h3>
       <div className="grid grid-cols-1 md:grid-cols-5 xl:grid-cols-5 gap-3 md:gap-5 xl:gap-7 xl:-mt-1.5 2xl:mt-0">
         {error ? (
           <div className="col-span-full">

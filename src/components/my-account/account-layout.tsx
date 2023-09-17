@@ -24,11 +24,6 @@ const accountMenu = [
     icon: <IoCartOutline className="w-[18px] md:w-5 h-[18px] md:h-5" />,
   },
   {
-    slug: ROUTES.ACCOUNT_CARDS,
-    name: 'text-cards',
-    icon: <Cards className="w-[18px] md:w-5 h-[18px] md:h-5" />,
-  },
-  {
     slug: ROUTES.ACCOUNT_ADDRESS,
     name: 'text-account-address',
     icon: <IoPersonOutline className="w-[18px] md:w-5 h-[18px] md:h-5" />,

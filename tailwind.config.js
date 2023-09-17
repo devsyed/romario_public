@@ -13,6 +13,10 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        "primary":"#003BD9",
+        "gray":{
+          100:"#F7F7F7"
+        },
         body: '#5A5A5A',
         heading: '#212121',
         input: '#1D1E1F',

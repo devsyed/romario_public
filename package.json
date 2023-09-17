@@ -3,7 +3,7 @@
   "version": "4.0.0",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 3003",
+    "dev": "HTTPS=true SSL_CERT_FILE=./ssl/localhost.pem SSL_KEY_FILE=./ssl/localhost-key.pem next dev -p 3003",
     "build": "next build",
     "start": "next start -p 3003",
     "clean": "rimraf \"{.next,node_modules}\""
@@ -29,6 +29,8 @@
     "jotai": "2.0.4",
     "js-cookie": "3.0.1",
     "lodash": "4.17.21",
+    "moment": "^2.29.4",
+    "moment-timezone": "^0.5.43",
     "next": "13.3.0",
     "next-auth": "4.22.0",
     "next-i18next": "13.2.2",

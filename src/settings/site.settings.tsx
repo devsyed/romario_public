@@ -6,7 +6,7 @@ import { DEFlag } from "@components/icons/DEFlag";
 import { ESFlag } from "@components/icons/ESFlag";
 
 export const siteSettings = {
-  name: "ChawkBazar",
+  name: "Romario Sports Wear",
   description:
     "Fastest E-commerce template built with React, NextJS, TypeScript, React-Query and Tailwind CSS.",
   author: {
@@ -15,8 +15,8 @@ export const siteSettings = {
     address: "",
   },
   logo: {
-    url: "/assets/images/logo.svg",
-    alt: "ChawkBazar",
+    url: "/icons/romario-logo.png",
+    alt: "Romario",
     href: "/",
     width: 95,
     height: 30,
@@ -71,7 +71,7 @@ export const siteSettings = {
   },
   homePageBlocks: {
     flashSale: {
-      slug: "flash-sale",
+    slug: "flash-sale",
     },
     featuredProducts: {
       slug: "featured-products"
