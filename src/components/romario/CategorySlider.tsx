@@ -21,7 +21,7 @@ export default function CategoriesSlider({categories} : CategoriesProps){
         <div className="romario-categories-slider mt-[50px] mb-[50px]">
             <h3 className='text-[24px] mb-5 text-black font-semibold'>Shop By Category</h3>
             <Swiper
-                 slidesPerView={7}
+                 slidesPerView={6}
                  spaceBetween={50}
             >
                 {newCategories?.data?.map((category: CategoryObject, index) => (

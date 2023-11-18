@@ -8,6 +8,8 @@ import { Address } from '@type/index';
 import Divider from '@components/ui/divider';
 import Container from '@components/ui/container';
 import Subscription from '@components/common/subscription';
+import { useEffect } from 'react';
+import { HttpClient } from '@framework/utils/request';
 
 export { getStaticProps } from '@framework/common.ssr';
 
@@ -25,6 +27,25 @@ const RightSideView = dynamic(
 export default function CheckoutPage() {
   const { me, loading } = useUser();
   const { t } = useTranslation();
+
+
+  async function removeLastOrder()
+  {
+    const currentDate = new Date();
+    const formattedDate = `${currentDate.getDate()}/${currentDate.getMonth() + 1}/${currentDate.getFullYear()}`;
+
+    const unProccessedOrder = localStorage.getItem(`paymentProcessedOn${formattedDate}`);
+    if(unProccessedOrder){
+      const response = HttpClient.get('/orders/remove_last_order');
+      localStorage.removeItem(`paymentProcessedOn${formattedDate}`)
+    }
+  }
+
+  useEffect(() => {
+    removeLastOrder()
+  },[])
+
+
   return (
     <>
       {!loading ? (

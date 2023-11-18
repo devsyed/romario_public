@@ -11,6 +11,7 @@ import {
 import { useAtom } from "jotai";
 import {
   couponAtom,
+  discountAtom,
   verifiedResponseAtom,
 } from '@store/checkout';
 import ItemCard from '@components/checkout/item/item-card';
@@ -21,10 +22,8 @@ import CryptoJS from 'crypto-js';
 import { useState } from 'react';
 import moment from 'moment-timezone';
 import { useEffect } from 'react';
-import { checkoutAtom, discountAtom, walletAtom } from '@store/checkout';
-import { useCreateOrder } from '@framework/orders';
-import { formatOrderedProduct } from '@lib/format-ordered-product';
-import { HttpClient } from '@framework/utils/request';
+import { useLocalStorage } from 'react-use';
+
 
 interface Props {
   className?: string;
@@ -36,34 +35,31 @@ const VerifiedItemList: React.FC<Props> = ({ className }) => {
   const [verifiedResponse] = useAtom(verifiedResponseAtom);
   const [coupon, setCoupon] = useAtom(couponAtom);
   const [discount] = useAtom(discountAtom);
-  const { createOrder, isLoading } = useCreateOrder();
 
   const [sharedsecret] = useState('2zuW4j)G3.');
   const [hash_algorithm] = useState('HMACSHA256');
   const [language] = useState('en_US');
   const [timezone, setTimezone] = useState('Asia/Dubai');
-  const [oid,setOid] = useState('818');
+  const [oid] = useState(881);
   const [ipgTransactionId] = useState(1);
   const [currency] = useState('784');
   const [mobileMode] = useState('false');
   const [checkoutoption] = useState('combinedpage');
   const [authenticateTransaction] = useState('true');
-  const [responseFailURL] = useState('http://localhost:3003/checkout');
-  const [responseSuccessURL] = useState('http://localhost:3003/thankyou');
+  const [responseFailURL] = useState('https://adcbresponse.free.beeceptor.com');
+  const [responseSuccessURL] = useState('https://adcbresponse.free.beeceptor.com');
   const [transactionNotificationURL] = useState('');
 
   const [storename] = useState('811676300198');
   const [txntype] = useState('sale');
   const [txnDateTime,setTxnDateTime] = useState('');
   const [extendedHash,setExtendedHash] = useState('');
-  const [trackingId, setTrackingId] = useState('')
 
   const calculateExtendedHash = () => {
     const stringToHash = `${base_amount + verifiedResponse?.shipping_charge + verifiedResponse?.total_tax}|${checkoutoption}|${currency}|${hash_algorithm}|${oid}|${responseFailURL}|${responseSuccessURL}|${storename}|${timezone}|${txnDateTime}|${txntype}`;
 
     const hashHMACSHA256 = CryptoJS.HmacSHA256(stringToHash, sharedsecret);
     const extendedhash = CryptoJS.enc.Base64.stringify(hashHMACSHA256);
-    console.log(extendedHash)
     setExtendedHash(extendedhash);
   };
 
@@ -117,70 +113,12 @@ const VerifiedItemList: React.FC<Props> = ({ className }) => {
   }, []); 
 
   
-  const [
-    {
-      billing_address,
-      shipping_address,
-      delivery_time,
-      ncoupon,
-      verified_response,
-      customer_contact,
-      customer_name,
-      payment_gateway,
-      token,
-    },
-  ] = useAtom(checkoutAtom);
-  const [ndiscount] = useAtom(discountAtom);
-  const [use_wallet_points] = useAtom(walletAtom);
-  const subtotal = calculateTotal(available_items);
 
 
-  const ntotal = calculatePaidTotal(
-    {
-      totalAmount: subtotal,
-      tax: verified_response?.total_tax!,
-      shipping_charge: verified_response?.shipping_charge!,
-    },
-    Number(discount)
-  );
-
-
-  const submitHandler = async(e) =>{
-    let input = {
-      products: available_items?.map((item) => formatOrderedProduct(item)),
-      amount: subtotal,
-      coupon_id: Number(ncoupon?.id),
-      discount: ndiscount ?? 0,
-      paid_total: ntotal,
-      sales_tax: verified_response?.total_tax,
-      delivery_fee: verified_response?.shipping_charge,
-      total: ntotal,
-      delivery_time: delivery_time?.title,
-      customer_contact,
-      customer_name,
-      use_wallet_points,
-      payment_gateway:'CASH_ON_DELIVERY',
-      payment_status: 'paid-online',
-      billing_address: {
-        ...(billing_address?.address && billing_address.address),
-      },
-      shipping_address: {
-        ...(shipping_address?.address && shipping_address.address),
-      },
-    };
-    delete input.billing_address.__typename;
-    delete input.shipping_address.__typename;
-    localStorage.setItem('cartItemsSession', JSON.stringify(input));
-
-    const currentDate = new Date();
-    const formattedDate = `${currentDate.getDate()}/${currentDate.getMonth() + 1}/${currentDate.getFullYear()}`;
-
-    localStorage.setItem(`paymentProcessedOn${formattedDate}`,'true');
-  
-    createOrder(input);
+  const submitHandler = (e) =>{
+    console.log(items)
     calculateExtendedHash();
   }
-
 
   return (
     <div className={className}>
@@ -242,7 +180,7 @@ const VerifiedItemList: React.FC<Props> = ({ className }) => {
       <p className='px-7'>We use <strong>ADCB</strong> Payment Gateway, You will be redirected to <strong>ADCB Payment Page</strong>.</p>
 
       
-      <form onSubmit={submitHandler} className='px-5' action="https://test.ipg-online.com/connect/gateway/processing" method="post" id="payment-intent-romario">
+      <form onSubmit={submitHandler} className='px-5' action="https://test.ipg-online.com/connect/gateway/processing" method="post">
         <input type="hidden" name="hash_algorithm" value={hash_algorithm}/>
         <input type="hidden" name="hashExtended" value={extendedHash}/>
         <input type="hidden" name="txntype" value={txntype} />
@@ -258,9 +196,9 @@ const VerifiedItemList: React.FC<Props> = ({ className }) => {
         <input type="hidden" name="transactionNotificationURL" value={transactionNotificationURL}/>
         
 
+        {/* <PlaceOrderAction>{t('button-place-order')}</PlaceOrderAction> */}
         <button className='bg-primary my-5 w-[400px] px-5 py-3 mr-5 text-white rounded all-categories-button flex items-center justify-center'>Pay Now</button>
       </form>
-       
     </div>
   );
 };

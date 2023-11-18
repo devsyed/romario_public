@@ -124,7 +124,7 @@ export default function Home() {
         <CategoriesSlider categories={categories}/>
         <Brands/>
         <CTA backgroundImage={CTAData.backgroundImage} height={CTAData.height} backgroundPosition={CTAData.backgroundPosition} content={CTAData.content}/>
-        <HomeProductsTopBlock sectionHeading='Featured Products' className='my-[75px]'/>
+        <HomeProductsTopBlock sectionHeading='Products' className='my-[75px]'/>
         <CategoryGrids data={categoriesBlockData} />
         <Newsletter/>
       </Container>

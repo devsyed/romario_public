@@ -93,19 +93,7 @@ export function useCreateOrder() {
     onSuccess: ({ tracking_number, payment_gateway, payment_intent }) => {
       if (tracking_number) {
         if ([PaymentGateway.COD].includes(payment_gateway as PaymentGateway)) {
-          return router.push(
-            `${ROUTES.ORDERS}/${encodeURIComponent(tracking_number)}`
-          );
-        }
-
-        if (payment_intent?.payment_intent_info?.is_redirect) {
-          return router.push(
-            payment_intent?.payment_intent_info?.redirect_url as string
-          );
-        } else {
-          return router.push(
-            `${ROUTES.ORDERS}/${encodeURIComponent(tracking_number)}/payment`
-          );
+          return tracking_number;
         }
       }
     },

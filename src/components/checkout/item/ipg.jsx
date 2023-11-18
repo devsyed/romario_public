@@ -46,7 +46,7 @@ function IPGForm() {
   };
 
   return (
-    <form id="paymentForm" method="post" action="https://test.ipg-online.com/connect/gateway/processing">
+    <form onSubmit={handleFormSubmit} id="paymentForm" method="post" action="https://test.ipg-online.com/connect/gateway/processing">
         <input type="hidden" name="hash_algorithm" value="HMACSHA256" required />
         <input type="hidden" name="language" value="en_US" />
         <input type="hidden" name="hashExtended" value={hashExtended} required />

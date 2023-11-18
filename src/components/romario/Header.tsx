@@ -29,11 +29,6 @@ const CartButton = dynamic(() => import("@components/cart/cart-button"), {
 });
 const headerMenuList = [
     {
-        "id":1,
-        "label":"Deals Today ⚡️",
-        "href":"/deals-today"
-    },
-    {
         "id":2,
         "label":"FAQ",
         "href":"/faq"
@@ -44,33 +39,7 @@ const headerMenuList = [
         "href":"/contact-us"
     },
 ]
-const mainMenu = [
-    {
-        "id":1,
-        "label":"Men's",
-        "href":"/search?category=men",
-    },
-    {
-        "id":2,
-        "label":"Women's",
-        "href":"/search?category=women"
-    },
-    {
-        "id":3,
-        "label":"Women's",
-        "href":"/search?category=women"
-    },
-    {
-        "id":4,
-        "label":"Women's",
-        "href":"/search?category=women"
-    },
-    {
-        "id":5,
-        "label":"Women's",
-        "href":"/search?category=women"
-    },
-]
+
 export default function Header(){
     const {
 		openSidebar,
@@ -113,7 +82,7 @@ export default function Header(){
               <Logo classNames="header-logo" variant="original" width={80} height={80} />
               <Menu classNames="hidden lg:flex header-menu ml-5 w-1/4 px-4" fontClasses="text-md"
                 orientation={"horizontal"} menuData={headerMenuList} />
-              <SearchBar classNames="w-1/2 hidden lg:block rounded" background={true} onClick={openSearch} />
+              <SearchBar classNames="w-1/2 ms-5 lg:block rounded" background={true} onClick={openSearch} />
               <div className="user-actions w-1/4 flex justify-end">
                 <button data-count={totalItems} onClick={handleCartOpen}
                   className="relative mt-1 cart-drawer-btn flex items-center justify-center">
@@ -128,7 +97,7 @@ export default function Header(){
               onClick={handleToggleDropdown} // Step 5: Attach the click event handler
               className="bg-primary px-5 py-3 mr-5 text-white w-56 rounded all-categories-button flex items-center justify-center"
             >
-            All Categories <AngleDown  />
+            Menu <AngleDown  />
             
           </button>
           {isDropdownOpen && (
@@ -149,11 +118,17 @@ export default function Header(){
                 <div className={"romario-menu-list hidden lg:flex header-menu main-menu ml-5 w-1/2 px-4" }>
                 <nav>
                     <ul className="flex gap-10">
-                    {brands.data.map((brand) => (
+                      <li><a href="/search?category=mens">Mens</a></li>
+                      <li><a href="/search?category=mens">Women</a></li>
+                      <li><a href="/search?category=mens">Children</a></li>
+                      <li><a href="/search?category=mens">Football</a></li>
+                      <li><a href="/search?category=mens">Basketball</a></li>
+                      <li><a href="/search?category=mens">Baseball</a></li>
+                    {/* {brands.data.map((brand) => (
                         <li key={brand.id}>
                             <a href={`/search?category=${brand.slug}`} className="hover:text-black transition-color">{brand.name}</a>
                         </li>
-                    ))}
+                    ))} */}
                     </ul>
                 </nav>
                 

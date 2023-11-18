@@ -5,6 +5,7 @@ import { useTranslation } from "next-i18next";
 import dayjs from "dayjs";
 import usePrice from "@lib/use-price";
 import { ROUTES } from "@lib/routes";
+import { HttpClient } from "@framework/utils/request";
 
 type Props = {
   order: Order;
@@ -15,6 +16,13 @@ const OrderSingleTable: React.FC<Props> = ({ order }) => {
   const { price: itemTotal } = usePrice({
     amount: order.total,
   });
+
+  const requestRefund = async(order_id: any) => {
+    const response = await HttpClient.post('/refunds',{order_id,title:"Request Refund for "});
+    console.log(response);
+  }
+
+  console.log(order)
 
   return (
     <tr className="border-b border-gray-300 last:border-b-0">
@@ -46,6 +54,11 @@ const OrderSingleTable: React.FC<Props> = ({ order }) => {
         >
           {t("button-view")}
         </Link>
+      </td>
+      <td>
+        {(order?.order_status !== 'order-refunded' && order?.order_status == 'order-processing' || order?.order_status == 'order-completed') && (
+            <button onClick={() => requestRefund(order?.id,)}>Request Refund</button>
+          )}
       </td>
     </tr>
   );

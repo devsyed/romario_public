@@ -40,11 +40,15 @@ const OrdersTable: React.FC<Props> = ({ orders, onPagination }: Props) => {
                 <th className="bg-gray-100 p-4 text-heading font-semibold ltr:text-left rtl:text-right lg:text-center w-36 xl:w-44">
                   Tracking Number
                 </th>
+                
                 <th className="bg-gray-100 p-4 text-heading font-semibold ltr:text-left rtl:text-right lg:text-center">
                   {t("text-total")}
                 </th>
                 <th className="bg-gray-100 p-4 text-heading font-semibold ltr:text-left rtl:text-right ltr:lg:text-right rtl:lg:text-left ltr:last:rounded-tr-md rtl:last:rounded-tl-md w-24">
                   {t("text-actions")}
+                </th>
+                <th className="bg-gray-100 p-4 text-heading font-semibold ltr:text-left rtl:text-right ltr:lg:text-right rtl:lg:text-left ltr:last:rounded-tr-md rtl:last:rounded-tl-md w-24">
+                  Refund
                 </th>
               </tr>
             </thead>
