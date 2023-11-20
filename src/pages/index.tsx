@@ -18,17 +18,13 @@ import HomeFeatured from '@containers/home-featured';
 import ProductsWithFlashSale from '@containers/products-with-flash-sale';
 import ProductsBlock from '@containers/products-block';
 
+
 const topbarData = [
   <p className="text-md font-light m-0">Free Delivery over AED 500 worth of Shopping</p>
 ]
 const sliderData = [
   {
     "id":1,
-    "backgroundImage":"/slide-1.png",
-    "content": <Slide1/>
-  },
-  {
-    "id":2,
     "backgroundImage":"/slide-1.png",
     "content": <Slide1/>
   }
@@ -83,25 +79,25 @@ const categoriesBlockData = [
     backgroundImage: "/categories/track.png",
     title: "Track",
     buttonText:"Shop Now",
-    buttonLink:"/tennis"
+    buttonLink:"/search?category=track"
   },
   {
     backgroundImage: "/categories/basketball.png",
     title: "Basketball",
     buttonText:"Shop Now",
-    buttonLink:"/tennis"
+    buttonLink:"/search?category=basketball"
   },
   {
     backgroundImage: "/categories/football.png",
     title: "Football",
     buttonText:"Shop Now",
-    buttonLink:"/tennis"
+    buttonLink:"/search?category=football"
   },
   {
     backgroundImage: "/categories/tennis.png",
     title: "Tennis",
     buttonText:"Shop Now",
-    buttonLink:"/tennis"
+    buttonLink:"/search?category=tennis"
   }
 ]
 
@@ -109,14 +105,12 @@ const CTAData = {
   backgroundImage: "/categories/cta.png",
   height:300,
   backgroundPosition:"right",
-  content: <div className="flex flex-col h-full items-start justify-center px-[300px] pb-4">
-      <h3 className="text-[56px] text-black">"ROMARIO15"</h3>
-      <p>USE THIS PROMO CODE TO AVAIL 15% DISCOUNT.</p>
-    </div>
+  content: ''
 }
 
 
 export default function Home() {
+  
   return (
     <div className="romario-homepage-wrapper">
       <Slider className="romario-homepage-slider" height={600} sliderData={sliderData}/>
@@ -125,8 +119,10 @@ export default function Home() {
         <Brands/>
         <CTA backgroundImage={CTAData.backgroundImage} height={CTAData.height} backgroundPosition={CTAData.backgroundPosition} content={CTAData.content}/>
         <HomeProductsTopBlock sectionHeading='Products' className='my-[75px]'/>
+        
         <CategoryGrids data={categoriesBlockData} />
         <Newsletter/>
+       
       </Container>
     </div>
   );

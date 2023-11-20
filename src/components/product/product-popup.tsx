@@ -18,6 +18,7 @@ import VariationPrice from '@components/product/product-variant-price';
 import { useCart } from '@store/quick-cart/cart.context';
 import { toast } from 'react-toastify';
 import isMatch from 'lodash/isMatch';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
 export default function ProductPopup({ productSlug }: { productSlug: string }) {
   const { t } = useTranslation('common');
@@ -125,15 +126,34 @@ export default function ProductPopup({ productSlug }: { productSlug: string }) {
     <div className="bg-white rounded-lg">
       <div className="flex flex-col lg:flex-row w-full md:w-[650px] lg:w-[960px] mx-auto overflow-hidden">
         <div className="relative flex items-center justify-center flex-shrink-0 w-full overflow-hidden bg-gray-300 lg:w-430px aspect-[1/1.3] max-h-430px lg:max-h-full">
-          <img
-            src={
-              productImage?.original ??
-              '/assets/placeholder/products/product-thumbnail.svg'
-            }
-            alt={product.name}
-            className="object-cover"
-            sizes="(max-width: 768px) 100vw"
-          />
+        <Swiper
+          slidesPerView={1}
+        >
+          <SwiperSlide>
+            <img
+              src={
+                productImage?.original ??
+                '/assets/placeholder/products/product-thumbnail.svg'
+              }
+              alt={product.name}
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw"
+            />
+          </SwiperSlide>
+          {product?.gallery?.map(image => (
+            <SwiperSlide>
+              <img
+              src={
+                image.original ??
+                '/assets/placeholder/products/product-thumbnail.svg'
+              }
+              alt={product.name}
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw"
+            />
+            </SwiperSlide>
+          ))}
+        </Swiper>
         </div>
 
         <div className="flex flex-col w-full p-5 md:p-8">

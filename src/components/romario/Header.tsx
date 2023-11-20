@@ -73,7 +73,6 @@ export default function Header(){
     }
 
     const { data: brands, isLoading: loading, error} = useCategories({ limit: 5 });
-    console.log(brands)
 
     return (
         <div className="romario-header-main mt-2 py-2 ">

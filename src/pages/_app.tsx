@@ -35,6 +35,7 @@ import type { NextPage } from 'next';
 import PrivateRoute from '@lib/private-route';
 import SocialLoginProvider from '../providers/social-login-provider';
 import { SessionProvider } from 'next-auth/react';
+import { WhatsappIcon } from 'react-share';
 
 function handleExitComplete() {
   if (typeof window !== 'undefined') {
@@ -76,6 +77,7 @@ function CustomApp({
 
   const router = useRouter();
   const dir = getDirection(router.locale);
+  const whatsAppNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER;
 
   useEffect(() => {
     document.documentElement.dir = dir;
@@ -100,6 +102,7 @@ function CustomApp({
                 <SocialLoginProvider />
                 <ManagedModal />
                 <ManagedDrawer />
+                <a href={`https://api.whatsapp.com/send?phone=${whatsAppNumber}`} className="float" target="_blank"><WhatsappIcon/></a>
               </ManagedUIContext>
             </AppSettings>
           </Hydrate>

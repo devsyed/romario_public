@@ -38,7 +38,7 @@ const VerifiedItemList: React.FC<Props> = ({ className }) => {
   const [discount] = useAtom(discountAtom);
   const { createOrder, isLoading } = useCreateOrder();
 
-  const [sharedsecret] = useState('2zuW4j)G3.');
+  const sharedsecret = process.env.NEXT_PUBLIC_ADCB_SHARED_SECRET;
   const [hash_algorithm] = useState('HMACSHA256');
   const [language] = useState('en_US');
   const [timezone, setTimezone] = useState('Asia/Dubai');
@@ -48,11 +48,11 @@ const VerifiedItemList: React.FC<Props> = ({ className }) => {
   const [mobileMode] = useState('false');
   const [checkoutoption] = useState('combinedpage');
   const [authenticateTransaction] = useState('true');
-  const [responseFailURL] = useState('http://localhost:3003/checkout');
-  const [responseSuccessURL] = useState('http://localhost:3003/thankyou');
+  const responseFailURL = process.env.NEXT_PUBLIC_ADCB_RESPONSE_FAIL_URL;
+  const responseSuccessURL = process.env.NEXT_PUBLIC_ADCB_RESPONSE_SUCCESS_URL;
   const [transactionNotificationURL] = useState('');
 
-  const [storename] = useState('811676300198');
+  const storename = process.env.NEXT_PUBLIC_ADCB_STORE_NAME ;
   const [txntype] = useState('sale');
   const [txnDateTime,setTxnDateTime] = useState('');
   const [extendedHash,setExtendedHash] = useState('');
@@ -180,7 +180,7 @@ const VerifiedItemList: React.FC<Props> = ({ className }) => {
     createOrder(input);
     calculateExtendedHash();
   }
-
+  console.log(process.env);
 
   return (
     <div className={className}>
@@ -242,7 +242,7 @@ const VerifiedItemList: React.FC<Props> = ({ className }) => {
       <p className='px-7'>We use <strong>ADCB</strong> Payment Gateway, You will be redirected to <strong>ADCB Payment Page</strong>.</p>
 
       
-      <form onSubmit={submitHandler} className='px-5' action="https://test.ipg-online.com/connect/gateway/processing" method="post" id="payment-intent-romario">
+      <form onSubmit={submitHandler} className='px-5' action={process.env.NEXT_PUBLIC_ADCB_PAYMENT_URL} method="post" id="payment-intent-romario">
         <input type="hidden" name="hash_algorithm" value={hash_algorithm}/>
         <input type="hidden" name="hashExtended" value={extendedHash}/>
         <input type="hidden" name="txntype" value={txntype} />

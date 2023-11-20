@@ -8,7 +8,7 @@ import { ESFlag } from "@components/icons/ESFlag";
 export const siteSettings = {
   name: "Romario Sports Wear",
   description:
-    "Fastest E-commerce template built with React, NextJS, TypeScript, React-Query and Tailwind CSS.",
+    "Romario Sports Wear",
   author: {
     name: "RedQ, Inc.",
     websiteUrl: "https://redq.io",

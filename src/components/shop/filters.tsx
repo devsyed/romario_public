@@ -51,7 +51,7 @@ export const ShopFilters: React.FC = () => {
 			<BrandFilter />
 			<PriceFilter />
 
-      {data && <AttributesFilter attributes={data} />}
+     
 		</div>
 	);
 };
