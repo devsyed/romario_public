@@ -270,6 +270,7 @@ export type SettingsOptions = {
   shippingClass?: string;
   contactDetails?: any;
   paymentGateway?: string;
+  termsAndConditions:HTMLDivElement
 };
 
 export interface Card {
